@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-Module for providing utility functions for manipulating sequences (lists and tuples)
-of integers.
+Module for functions for manipulating sequences of integers.
 
 """
 
 from typing import List, Tuple, Union
 
-def zoom_array(lst: Union[Tuple[int, ...], List[int]], factor: int = 2) -> List[int]:
+
+def zoom_array(lst: Tuple[int, ...], factor: int = 2) -> List:
     """
-    Multiplies each item in a tuple or list by a certain factor and returns a list.
+    Multiplies each item in a tuple by a certain factor.
 
     """
     zoomed_in: List[int] = [
@@ -20,5 +20,5 @@ def zoom_array(lst: Union[Tuple[int, ...], List[int]], factor: int = 2) -> List[
 
 array = [12, 72, 91]
 
-zoom_2x = zoom_array(array)
-zoom_3x = zoom_array(array, 3)
+zoom_2x = zoom_array(tuple(array))
+zoom_3x = zoom_array(tuple(array), 3)
