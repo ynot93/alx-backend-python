@@ -4,17 +4,16 @@ Module for safely retrieving a value from a dictionary with a default.
 
 """
 
-from typing import Mapping, Any, TypeVar, Optional
+from typing import Mapping, Any, TypeVar, Union
 
-# Type variable that could be any type or None
 T = TypeVar('T')
 
 
 def safely_get_value(
     dct: Mapping[Any, T], 
     key: Any, 
-    default: Optional[T] = None
-) -> Optional[T]:
+    default: Union[T, None]
+) -> Union[Any, T]:
     """
     Get the value from a dictionary by key or return a default value.
 

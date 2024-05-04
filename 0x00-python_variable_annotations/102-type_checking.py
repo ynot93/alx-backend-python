@@ -7,7 +7,7 @@ Module for functions for manipulating sequences of integers.
 from typing import List, Tuple, Union
 
 
-def zoom_array(lst: Tuple[int, ...], factor: int = 2) -> List:
+def zoom_array(lst: Tuple, factor: int = 2) -> List:
     """
     Multiplies each item in a tuple by a certain factor.
 

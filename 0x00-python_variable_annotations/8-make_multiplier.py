@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Module for creating a function that multiplies a number by a specified multiplier.
+Creates a function that multiplies a number by a multiplier.
 
 """
 
