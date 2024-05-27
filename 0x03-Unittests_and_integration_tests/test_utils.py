@@ -4,7 +4,8 @@ This module deals with unittests and integration tests
 
 """
 import unittest
-from utils import access_nested_map
+from unittest.mock import patch, Mock
+from utils import access_nested_map, get_json
 from parameterized import parameterized
 from typing import Mapping, Sequence, Any
 
@@ -38,6 +39,31 @@ class TestAccessNestedMap(unittest.TestCase):
         with self.assertRaises(KeyError) as context:
             access_nested_map(nested_map, path)
         self.assertEqual(str(context.exception), repr(path[-1]))
+
+
+class TestGetJson(unittest.TestCase):
+    """
+    Contains tests for the get_json function in utils.py
+
+    """
+    @parameterized.expand([
+        ("http://example.com", {"payload": True}),
+        ("http://holberton.io", {"payload": False}),
+    ])
+    @patch('requests.get')
+    def test_get_json(self, test_url, test_payload, mock_get):
+        """
+        Test that function returns expected result
+
+        """
+        mock_object = Mock()
+        mock_object.json.return_value = test_payload
+        mock_get.return_value = mock_object
+
+        result = get_json(test_url)
+
+        self.assertEqual(result, test_payload)
+        mock_get.assert_called_once_with(test_url)
 
 
 if __name__ == "__main__":
