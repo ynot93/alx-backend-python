@@ -28,7 +28,7 @@ class TestGithubOrgClient(unittest.TestCase):
                  mocked_fn: Mock) -> None:
         """
         Tests that org returns correct value
-    
+
         """
         mocked_fn.return_value = Mock(
             return_value=expected_response)
