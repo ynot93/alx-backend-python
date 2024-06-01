@@ -31,7 +31,7 @@ class TestGithubOrgClient(unittest.TestCase):
     @patch('client.get_json')
     def test_public_repos(self, mock_get_json):
         """
-        Test that GithubOrgClient.public_repos returns the correct list of repositories
+        Test that public_repos returns the correct list of repos
 
         """
         mock_repos_url = 'https://api.github.com/orgs/test_org/repos'
@@ -42,7 +42,8 @@ class TestGithubOrgClient(unittest.TestCase):
             {"name": "repo3"},
         ]
 
-        with patch.object(GithubOrgClient, 'org', new_callable=Mock) as mock_org_method:
+        with patch.object(GithubOrgClient, 'org',
+                          new_callable=Mock) as mock_org_method:
             mock_org_method.return_value = mock_org
             mock_get_json.return_value = mock_repos
 
@@ -79,15 +80,18 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         Set up class method
 
         """
-        cls.get_patcher = patch('client.get_json', side_effect=cls.get_json_side_effect)
+        cls.get_patcher = patch('client.get_json',
+                                side_effect=cls.get_json_side_effect)
         cls.mock_get_json = cls.get_patcher.start()
-        
+
         cls.repos_payload = [
             {"name": "repo1", "license": {"key": "apache-2.0"}},
             {"name": "repo2", "license": {"key": "mit"}},
             {"name": "repo3", "license": {"key": "apache-2.0"}},
         ]
-        cls.org_payload = {"repos_url": "https://api.github.com/orgs/test_org/repos"}
+        cls.org_payload = {
+            "repos_url": "https://api.github.com/orgs/test_org/repos"
+        }
 
     @classmethod
     def tearDownClass(cls):

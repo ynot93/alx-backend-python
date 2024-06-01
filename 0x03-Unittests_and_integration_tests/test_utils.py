@@ -20,7 +20,8 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2),
     ])
-    def test_access_nested_app(self, nested_map: Mapping, path: Sequence, expected: Any) -> None:
+    def test_access_nested_app(self, nested_map: Mapping, path: Sequence,
+                               expected: Any) -> None:
         """
         Test correct return value of method
 
@@ -31,7 +32,8 @@ class TestAccessNestedMap(unittest.TestCase):
         ({}, ("a",)),
         ({"a": 1}, ("a", "b")),
     ])
-    def test_access_nested_map_exception(self, nested_map: Mapping, path: Sequence) -> None:
+    def test_access_nested_map_exception(self, nested_map: Mapping,
+                                         path: Sequence) -> None:
         """
         Test raises KeyError with the expected message
 
@@ -51,7 +53,8 @@ class TestGetJson(unittest.TestCase):
         ("http://holberton.io", {"payload": False}),
     ])
     @patch('requests.get')
-    def test_get_json(self, test_url: str, test_payload: Dict, mock_get) -> None:
+    def test_get_json(self, test_url: str, test_payload: Dict,
+                      mock_get) -> None:
         """
         Test that function returns expected result
 
@@ -85,7 +88,8 @@ class TestMemoize(unittest.TestCase):
             def a_property(self) -> int:
                 return self.a_method()
 
-        with patch.object(TestClass, 'a_method', return_value=42) as mock_object:
+        with patch.object(TestClass, 'a_method',
+                          return_value=42) as mock_object:
             my_test_class = TestClass()
 
             result1 = my_test_class.a_property
