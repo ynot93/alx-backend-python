@@ -20,7 +20,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2),
     ])
-    def test_access_nested_app(self, nested_map: Mapping, path: Sequence,
+    def test_access_nested_map(self, nested_map: Mapping, path: Sequence,
                                expected: Any) -> None:
         """
         Test correct return value of method
